@@ -1,0 +1,16 @@
+INFO:root:Soldiers initialized:
+INFO:root:ID: 0, X: 8, Y: 4, Speed: 4, Commander: False
+INFO:root:ID: 1, X: 7, Y: 0, Speed: 1, Commander: False
+INFO:root:ID: 2, X: 0, Y: 7, Speed: 2, Commander: False
+INFO:root:ID: 3, X: 4, Y: 0, Speed: 0, Commander: False
+INFO:root:ID: 4, X: 6, Y: 5, Speed: 1, Commander: False
+INFO:root:ID: 5, X: 9, Y: 7, Speed: 0, Commander: False
+INFO:root:ID: 6, X: 7, Y: 7, Speed: 4, Commander: False
+INFO:root:ID: 7, X: 1, Y: 6, Speed: 2, Commander: True
+INFO:root:ID: 8, X: 9, Y: 3, Speed: 2, Commander: False
+INFO:root:ID: 9, X: 8, Y: 0, Speed: 3, Commander: False
+INFO:root:Missile launched!
+INFO:root:Missile launched!
+INFO:root:Missile launched!
+INFO:root:Missile launched!
+INFO:root:BATTLE WON.

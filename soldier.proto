@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+message Soldier {
+    int32 id = 1;
+    int32 x = 2;
+    int32 y = 3;
+    int32 speed = 4;
+    bool alive = 5;
+    bool is_commander = 6;
+}
+
+message Missile {
+  int32 id = 1;
+  int32 target_x = 2;
+  int32 target_y = 3;
+  string category = 4;
+}
+
+message MissileStrike {
+  int32 missile_id = 1;
+  int32 affected_soldier_id = 2;
+  bool is_commander_affected = 3;
+}
+
+message ThreatNotification {
+  bool is_commander_dead = 1;
+  repeated int32 dead_soldier_ids = 2;
+}
+
+message BattleResult {
+  bool is_battle_won = 1;
+}
+
+message SoldierList {
+  repeated Soldier soldiers = 1;
+}
+
+message CommandRequest {
+  string command = 1;
+}
+
+message CommandResponse {
+  string result = 1;
+}
+
+message SoldierListRequest {
+  int32 num_soldiers = 1;
+  int32 field_size = 2;
+  int32 commander_id = 3;
+  int32 battle_duration = 4;
+  int32 missile_interval = 5;
+}
+
+message LaunchMissileRequest {
+  int32 target_x = 1;
+  int32 target_y = 2;
+  string category = 3;
+}
+
+message UpdateSoldierPositionRequest {
+  int32 soldier_id = 1;
+  int32 new_x = 2;
+  int32 new_y = 3;
+}
+
+message CheckBattleResultRequest {
+    int32 num_soldiers = 1; // Add this field
+}
+
+service SoldierService {
+  rpc InitializeSoldiers(SoldierListRequest) returns (SoldierList);
+  rpc IssueCommand(CommandRequest) returns (CommandResponse);
+  rpc LaunchMissile(LaunchMissileRequest) returns (stream MissileStrike);
+  rpc NotifyThreat(ThreatNotification) returns (CommandResponse);
+  rpc UpdateSoldierPosition(UpdateSoldierPositionRequest) returns (CommandResponse);
+  rpc CheckBattleResult(CheckBattleResultRequest) returns (BattleResult);
+  rpc MissileNotification(Missile) returns (CommandResponse);
+}
